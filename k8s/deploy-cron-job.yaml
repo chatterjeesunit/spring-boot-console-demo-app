@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: demo-app-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: demo-app-job
+            image: spring-boot-console-app:1.0
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
